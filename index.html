@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>多工业场景结构光数据集介绍</title>
+  <style>
+    :root {
+      --text: #f5f8ff;
+      --card-bg: rgba(8, 20, 44, 0.62);
+      --line: rgba(255, 255, 255, 0.25);
+      --accent: #6fd3ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        linear-gradient(rgba(4, 12, 30, 0.64), rgba(4, 12, 30, 0.8)),
+        url("https://wangh257.github.io/temp_html/%E9%B9%8F%E5%9F%8E%E5%9B%BE%E7%89%87.jpg") center/cover no-repeat fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      width: min(1080px, 100%);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(2, 10, 24, 0.5);
+      backdrop-filter: blur(4px);
+      padding: 28px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      margin: 0 0 24px;
+      color: #cfe8ff;
+      font-size: 1rem;
+    }
+
+    .section {
+      margin-top: 18px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--card-bg);
+    }
+
+    .section h2 {
+      margin: 0 0 14px;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .metal-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .item {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 0.98rem;
+      transition: transform 0.22s ease, background-color 0.22s ease, border-color 0.22s ease;
+    }
+
+    .item:hover {
+      transform: translateY(-4px);
+      background: rgba(111, 211, 255, 0.2);
+      border-color: rgba(111, 211, 255, 0.7);
+    }
+
+    .thumb {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 10px);
+      width: 180px;
+      height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.88rem;
+      background:
+        linear-gradient(135deg, rgba(111, 211, 255, 0.26), rgba(255, 255, 255, 0.06)),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.08) 8px,
+          rgba(255, 255, 255, 0.02) 8px,
+          rgba(255, 255, 255, 0.02) 16px
+        );
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      transform: translate(-50%, 6px) scale(0.98);
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease, filter 0.22s ease;
+      z-index: 5;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .item:hover .thumb {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1);
+      filter: brightness(1.12) saturate(1.15);
+    }
+
+    .label {
+      padding: 12px 14px;
+    }
+
+    @media (max-width: 900px) {
+      .metal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .metal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>多工业场景结构光数据集</h1>
+    <p class="subtitle">
+      本数据集包含两个子模块：机加工金属场景与石膏场景。
+    </p>
+
+    <section class="section">
+      <h2>机加工金属场景</h2>
+      <div class="grid metal-grid">
+        <div class="item">
+          <div class="thumb">
+            <img src="https://wangh257.github.io/temp_html/%E5%9B%BE%E7%89%87/%E9%87%91%E5%B1%9E/%E4%BD%8E%E6%9B%9D%E5%85%89.png" alt="低曝光金属图缩略图" />
+          </div>
+          <div class="label">低曝光金属图</div>
+        </div>
+        <div class="item">
+          <div class="thumb">
+            <img src="https://wangh257.github.io/temp_html/%E5%9B%BE%E7%89%87/%E9%87%91%E5%B1%9E/%E9%AB%98%E6%9B%9D%E5%85%89.png" alt="高曝光金属图缩略图" />
+          </div>
+          <div class="label">高曝光金属图</div>
+        </div>
+        <div class="item">
+          <div class="thumb">
+            <img src="https://wangh257.github.io/temp_html/%E5%9B%BE%E7%89%87/%E9%87%91%E5%B1%9E/HDR%20%E5%9B%BE.png" alt="合成HDR图缩略图" />
+          </div>
+          <div class="label">合成的 HDR 图</div>
+        </div>
+        <div class="item">
+          <div class="thumb">
+            <img src="https://wangh257.github.io/temp_html/%E5%9B%BE%E7%89%87/%E9%87%91%E5%B1%9E/%E7%9B%B8%E4%BD%8D%E5%9B%BE.png" alt="机加工金属相位图缩略图" />
+          </div>
+          <div class="label">相位图</div>
+        </div>
+        <div class="item">
+          <div class="thumb">
+            <img src="https://wangh257.github.io/temp_html/%E5%9B%BE%E7%89%87/%E9%87%91%E5%B1%9E/%E7%82%B9%E4%BA%91%E5%9B%BE.png" alt="机加工金属点云图缩略图" />
+          </div>
+          <div class="label">点云图</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>石膏场景</h2>
+      <div class="grid">
+        <div class="item">
+          <div class="thumb">
+            <img src="https://wangh257.github.io/temp_html/%E5%9B%BE%E7%89%87/%E7%9F%B3%E8%86%8F/%E6%AD%A3%E5%B8%B8%E6%9B%9D%E5%85%89.bmp" alt="正常曝光石膏图缩略图" />
+          </div>
+          <div class="label">正常曝光石膏图</div>
+        </div>
+        <div class="item">
+          <div class="thumb">
+            <img src="https://wangh257.github.io/temp_html/%E5%9B%BE%E7%89%87/%E7%9F%B3%E8%86%8F/%E7%9B%B8%E4%BD%8D%E5%9B%BE.png" alt="石膏相位图缩略图" />
+          </div>
+          <div class="label">相位图</div>
+        </div>
+        <div class="item">
+          <div class="thumb">
+            <img src="https://wangh257.github.io/temp_html/%E5%9B%BE%E7%89%87/%E7%9F%B3%E8%86%8F/%E7%82%B9%E4%BA%91%E5%9B%BE.png" alt="石膏点云图缩略图" />
+          </div>
+          <div class="label">点云图</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
